@@ -1,0 +1,200 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Solid Challenge",
+    "description": "This is an API Solid Challenge",
+    "version": "1.0.0",
+    "contact": {
+      "email": "fabiomartins1988@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create an user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Carlos Bandeira",
+                  "email": "carlinhos_da_bandeira@testoso.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties" : {
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "email" : {
+                      "type" : "string"
+                    },
+                    "id" : {
+                      "type" : "string"
+                    },
+                    "admin" : {
+                      "type" : "boolean"
+                    },
+                    "created_at" : {
+                      "type" : "string"
+                    },
+                    "updated_at" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "User already exists!"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "List all users",
+        "description": "List all users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "List an user",
+        "description": "List an user",
+        "parameters" : [
+          {
+          "name" : "id",
+          "in" : "path",
+          "schema" : {
+            "type" : "string"
+          }
+        }
+      ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "email" : {
+                        "type" : "string"
+                      },
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "admin" : {
+                        "type" : "boolean"
+                      },
+                      "created_at" : {
+                        "type" : "string"
+                      },
+                      "updated_at" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Turn user Admin",
+        "description": "Turn user into Admin",
+        "parameters" : [
+          {
+          "name" : "id",
+          "in" : "path",
+          "schema" : {
+            "type" : "string"
+          }
+        }
+      ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties" : {
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "email" : {
+                      "type" : "string"
+                    },
+                    "id" : {
+                      "type" : "string"
+                    },
+                    "admin" : {
+                      "type" : "boolean"
+                    },
+                    "created_at" : {
+                      "type" : "string"
+                    },
+                    "updated_at" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
